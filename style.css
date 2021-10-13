@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bolder;
+    margin: 0;
+}
+
+.container {
+    width: 300px;
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(223, 176, 176);
+}
+
+.joke-type, .joke-punchline, .joke-setup {
+    margin: 25px 0;
+}
+
+.container #generate-button {
+    margin: 25px 0 0 0;
+}
+
+.container #generate-button button {
+    border-radius: 30px;
+    background-color: bisque;
+    cursor: pointer;
+}
+
+.container #generate-button button:focus {
+    outline: none;
+}
+
+.container #generate-button button:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+#generate-button button {
+    padding: 10px 15px;
+    font-size: 1.5em;
+}
+
