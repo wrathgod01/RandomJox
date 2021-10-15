@@ -1,8 +1,6 @@
-const nextButton = document.getElementById('generate-button');
-const button = document.getElementById('button');
+const nextButtonContainer = document.getElementById('generate-button');
+const nextButton = document.getElementById('jokeButton');
 const jokeContainer = document.getElementById('joke-container');
-
-nextButton.addEventListener('click', generateMeme);
 
 const message = new SpeechSynthesisUtterance();
 
@@ -12,43 +10,48 @@ function setMessage(text, volume) {
     message.volume = volume;
 }
 
-
-function extractJoke(data) {
-    const type = data.type;
-    const setup = data.setup;
-    const punchline = data.punchline;
-
-    setMessage(setup, 0.65);
+function speak(joke){
+    setMessage(joke, 0.65);
     speechSynthesis.speak(message);
-    setMessage(punchline, 0.8);
-    speechSynthesis.speak(message);
-
-    jokeContainer.innerHTML = `<div class="joke-setup">
-                                    <h3>${setup}</h3>
-                                </div>
-                                <hr>
-                                <div class="joke-punchline">
-                                        <h1>${punchline + "&#129315;"}</h1>
-                                </div>
-                                <div class="joke-type">
-                                        <strong>Genre: ${type.charAt(0).toUpperCase() + type.slice(1)}</strong>
-                                </div>
-                            `;
-    button.innerHTML = "Tell Me Another Joke";
-    const line = document.getElementsByClassName("hr")[0];
-    line.innerHTML = "<hr>"
 }
 
-function generateMeme() {
-    const urlList = ['https://official-joke-api.appspot.com/jokes/random', 'https://official-joke-api.appspot.com/random_joke', 'https://official-joke-api.appspot.com/jokes/programming/random'];
-    const randomIdx = Math.floor(Math.random() * urlList.length);
-    // console.log(randomIdx);
-    const url = urlList[randomIdx]; 
-    fetch(url).then(res => 
-            res.json().then(json => {
-                json.length !== undefined ? extractJoke(json[0]): extractJoke(json); 
-            })
-    );
+(async function starterJoke() {
+    var url = `https://icanhazdadjoke.com/`;
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json'
+        }
+    });
+    
+    const json = await response.json();
+    const joke = json.joke;
+    jokeContainer.innerHTML = joke;
+    speak(jokeContainer.textContent);
+    nextButtonContainer.innerHTML = `<button id="jokeButton" class="btn btn-success">
+                                            Tell Me Another One!
+                                        </button>`;
+})();
+
+
+async function fetchJoke() {
+    var url = `https://icanhazdadjoke.com/`;
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json'
+        }
+    });
+    
+    const json = await response.json();
+    const joke = json.joke;
+    jokeContainer.innerHTML = joke;
+    speak(joke);
 }
 
+document.addEventListener('click', function(e) {
+    if(e.target && e.target.id == "jokeButton"){
+        fetchJoke();
+    }
+});
 
