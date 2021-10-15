@@ -4,7 +4,7 @@ A chrome extension generating random jokes
 # Steps to install
 * Download the Repository into your local machine in the form of ZIP.
 * Unzip it into a folder.
-* Goto Google Chrome
+* Goto Google Chrome(or any browser which is built on Chromium i.e. Brave etc.)
 * Then from Navigator, goto Settings.
 * Goto Extensions.
 * Turn on your Developer Mode.
