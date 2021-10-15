@@ -13,3 +13,5 @@ A chrome extension generating random jokes
 * Enable it if it's turned off.
 
 ## **Great!!! Now you are good to go!**
+
+## **If you liked it, fork this project😏👍**
