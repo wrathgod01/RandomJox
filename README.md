@@ -1,5 +1,6 @@
 # RandomJox
-A chrome extension generating random jokes
+A chrome extension generating random jokes and speaks the joke out loud. 
+Built using [Dad Jokes API](https://icanhazdadjoke.com/api), Web Speech Synthesis API.
 
 # Steps to install
 * Download the Repository into your local machine in the form of ZIP.
