@@ -2,7 +2,7 @@
     "name": "RandomJox",
     "version": "1.0",
     "manifest_version": 2,
-    "description": "Random Jokes on Programming, Knock-Knock and in General",
+    "description": "Random Jokes",
     "icons": {"128": "icon-128.png"},
     "browser_action": {
         "default-icon": "icon.png",
